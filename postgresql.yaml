@@ -1,0 +1,15 @@
+services:
+  postgresql:
+    image: "postgres:14"
+    container_name: postgresql-14
+    restart: always
+    shm_size: '1gb'
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresql-14-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_PASSWORD: password
+volumes:
+  postgresql-14-data:

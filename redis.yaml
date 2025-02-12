@@ -1,0 +1,15 @@
+services:
+  redis:
+    image: redis:6.2.14
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/bitnami/redis/data/
+    environment:
+      - REDIS_PASSWORD=password
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
+volumes:
+  redis-data:
