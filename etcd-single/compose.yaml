@@ -5,12 +5,12 @@ services:
     ports:
       - "2379:2379"  # client port 
       - "2380:2380"  # node connect
-    # volumes:
-    #   - ./etcd-data:/etcd-data
+    volumes:
+      - $HOME/data/etcd-single:/var/lib/etcd
     command: >
       /usr/local/bin/etcd
-      --name my-etcd
-      --data-dir /etcd-data
+      --name etcd-single
+      --data-dir /var/lib/etcd
       --listen-client-urls http://0.0.0.0:2379
       --advertise-client-urls http://172.21.0.2:2379
       --listen-peer-urls http://0.0.0.0:2380
